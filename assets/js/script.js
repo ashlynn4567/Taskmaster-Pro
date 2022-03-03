@@ -15,7 +15,6 @@ var createTask = function(taskText, taskDate, taskList) {
   // append span and p element to parent li
   taskLi.append(taskSpan, taskP);
 
-
   // append to ul list on the page
   $("#list-" + taskList).append(taskLi);
 };
@@ -33,7 +32,7 @@ var loadTasks = function() {
       inReview: [],
       done: []
     };
-  }
+  };
 
   // loop over object properties
   $.each(tasks, function(list, arr) {
@@ -54,16 +53,18 @@ var saveTasks = function() {
 
 // edit an existing task by clicking on the task
 $(".list-group").on("click", "p", function() {
+  // get current text of p element
   var text = $(this)
     .text()
     .trim();
   
+  // replace p element with a new textarea
   var textInput = $("<textarea>")
     .addClass("form-control")
     .val(text);
-
   $(this).replaceWith(textInput);
 
+  // auto focus new element
   textInput.trigger("focus");
 });
 
@@ -73,7 +74,6 @@ $(".list-group").on("blur", "textarea", function () {
   // get the textarea's current value/text
   var text = $(this)
     .val()
-    .trim();
 
   // get the parent ul's id attribute
   var status = $(this)
@@ -111,8 +111,6 @@ $(".list-group").on("click", "span", function() {
     .attr("type", "text")
     .addClass("form-control")
     .val(date);
-
-  // swap out elements
   $(this).replaceWith(dateInput);
 
   // automatically focus on new element
@@ -121,18 +119,23 @@ $(".list-group").on("click", "span", function() {
 
 
 // save edited date when clicking out of text area 
-$(".list-group").on("blue", "input[type='text']", function () {
+$(".list-group").on("blur", "input[type='text']", function () {
   // get current text
   var date = $(this)
     .val()
-    .trim();
 
   // get the parent ul's id attribute
   var status = $(this)
+    .closest(".list-group")
+    .attr("id")
+    .replace("list-", "");
+
+  // get the task's position in the list of other li elements
+  var index = $(this)
     .closest(".list-group-item")
     .index();
-
-  // update task in an array and re-save to localStorage
+  
+  // update task in array and re-save to localStorage
   tasks[status][index].date = date;
   saveTasks();
 
