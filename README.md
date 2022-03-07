@@ -1,6 +1,6 @@
 # Taskmaster-Pro
 
-## Organize like a pro.
+### Organize like a pro.
 
 This is my fourth project for the University of Oregon Coding Bootcamp 2022. In this project, I work with an existing codebase to expand a task-management application, adding new date and organizational functionality using jQuery, Bootstrap, and Moment.js.
 
@@ -27,7 +27,7 @@ This is how the main page appears to users. The page is responsive, adapting to 
 
 <p align="center"><img src=""/></p>
 
-## Try it for yourself!
+## Deployed Site
 
 <a href="https://ashlynn4567.github.io/Taskmaster-Pro/">Click here to track your tasks like a pro!<a>
 
@@ -39,6 +39,7 @@ In the future, I would like to add the following improvements:
 
 I'm a big believer in always refactoring code to improve it's functionality. If you would like to suggest your own improvements, you can reach me at the following links.
 
+- <a href="mailto:ashlynn4567@gmail.com">Email<a>
 - <a href="https://github.com/ashlynn4567">GitHub<a>
 - <a href="www.linkedin.com/in/Ashley-Lynn-Smith">LinkedIn<a>
 
