@@ -51,6 +51,79 @@ var saveTasks = function() {
 };
 
 
+// making the columns sortable
+$(".card .list-group").sortable({
+  // enable dragging across lists
+  connectWith: $(".card .list-group"),
+  scroll: false, 
+  tolerance: "pointer",
+  helper: "clone",
+  activate: function(event, ui) {
+    console.log(ui);
+  },
+  deactivate: function(event, ui) {
+    console.log(ui);
+  },
+  over: function(event) {
+    console.log(event);
+  },
+  out: function(event) {
+    console.log(event);
+  },
+  update: function() {
+    // array to store the task data in
+    var tempArr = [];
+    
+    // loop over current set of children in sortable list
+    $(this).children().each(function() {
+      var text = $(this)
+        .find("p")
+        .text()
+        .trim();
+
+      var date = $(this)
+        .find("span")
+        .text()
+        .trim();
+
+      // add task data to the temp array as an object
+      tempArr.push({
+        text: text,
+        date: date,
+      });
+
+      // trim down list's ID to match object property
+      var arrName = $(this)
+        .attr("id")
+        .replace("list-", "");
+
+      // update array on tasks object and save
+      tasks[arrName] = tempArr;
+      saveTasks();
+    });
+  },
+  stop: function(event) {
+    $(this).removeClass("dropover");
+  }
+});
+
+// add ability to drop tasks in trash section to delete them
+$("#trash").droppable({
+  accept: ".card .list-group-item",
+  tolerance: "touch",
+  drop: function(event, ui) {
+    console.log(ui);
+    ui.draggable.remove();
+  },
+  over: function(event, ui) {
+    console.log(ui);
+  },
+  out: function(event, ui) {
+    console.log(ui);
+  }
+});
+
+
 // modal was triggered
 $("#task-form-modal").on("show.bs.modal", function() {
   // clear values
@@ -62,6 +135,16 @@ $("#task-form-modal").on("show.bs.modal", function() {
 $("#task-form-modal").on("shown.bs.modal", function() {
   // highlight textarea
   $("#modalTaskDescription").trigger("focus");
+});
+
+
+// enabling the calendar dropdown in the modal 
+$("#modalDueDate").datepicker({
+  minDate: 1,
+  onClose: function() {
+    // when calendar is closed, force a "change" event on the dateInput
+    $(this).trigger("change");
+  }
 });
 
 
@@ -150,13 +233,18 @@ $(".list-group").on("click", "span", function() {
     .val(date);
   $(this).replaceWith(dateInput);
 
+  // enable jquery ui datepicker
+  dateInput.datepicker({
+    minDate: 1
+  });
+
   // automatically bring up the calendar
   dateInput.trigger("focus");
 });
 
 
 // save edited date when clicking out of text area 
-$(".list-group").on("blur", "input[type='text']", function () {
+$(".list-group").on("change", "input[type='text']", function () {
   // get current text
   var date = $(this).val();
 
@@ -194,77 +282,6 @@ $("#remove-tasks").on("click", function() {
   saveTasks();
 });
 
-// making the columns sortable
-$(".card .list-group").sortable({
-  // enable dragging across lists
-  connectWith: $(".card .list-group"),
-  scroll: false, 
-  tolerance: "pointer",
-  helper: "clone",
-  activate: function(event, ui) {
-    console.log(ui);
-  },
-  deactivate: function(event, ui) {
-    console.log(ui);
-  },
-  over: function(event) {
-    console.log(event);
-  },
-  out: function(event) {
-    console.log(event);
-  },
-  update: function() {
-    // array to store the task data in
-    var tempArr = [];
-    
-    // loop over current set of children in sortable list
-    $(this).children().each(function() {
-      var text = $(this)
-        .find("p")
-        .text()
-        .trim();
-
-      var date = $(this)
-        .find("span")
-        .text()
-        .trim();
-
-      // add task data to the temp array as an object
-      tempArr.push({
-        text: text,
-        date: date,
-      });
-
-      // trim down list's ID to match object property
-      var arrName = $(this)
-        .attr("id")
-        .replace("list-", "");
-
-      // update array on tasks object and save
-      tasks[arrName] = tempArr;
-      saveTasks();
-    });
-  },
-  stop: function(event) {
-    $(this).removeClass("dropover");
-  }
-});
-
-// add ability to drop tasks in trash section to delete them
-$("#trash").droppable({
-  accept: ".card .list-group-item",
-  tolerance: "touch",
-  drop: function(event, ui) {
-    console.log(ui);
-    ui.draggable.remove();
-  },
-  over: function(event, ui) {
-    console.log(ui);
-  },
-  out: function(event, ui) {
-    console.log(ui);
-  }
-});
 
 // load tasks for the first time
 loadTasks();
