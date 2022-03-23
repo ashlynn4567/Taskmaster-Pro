@@ -29,7 +29,7 @@ This is how the main page appears to users. The page is responsive, adapting to 
 
 ## Deployed Site
 
-<a href="https://ashlynn4567.github.io/Taskmaster-Pro/">Click here to track your tasks like a pro!<a>
+<a href="https://ashlynn4567.github.io/Taskmaster-Pro/">Click here to track your tasks like a pro!</a>
 
 ## Suggestion Box
 
@@ -41,7 +41,7 @@ I'm a big believer in always refactoring code to improve it's functionality. If 
 
 - <a href="mailto:ashlynn4567@gmail.com">Email<a>
 - <a href="https://github.com/ashlynn4567">GitHub<a>
-- <a href="https://www.linkedin.com/in/ashley-lynn-smith/">LinkedIn<a>
+- <a href="https://www.linkedin.com/in/ashley-lynn-smith/">LinkedIn</a>
 
 ## Credits
 
