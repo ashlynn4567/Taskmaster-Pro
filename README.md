@@ -17,7 +17,7 @@ With this application, you can keep track of your tasks. Simply click "Add Task"
 
 ## Deployed Site
 
-Follow [this link](https://ashlynn4567.github.io/Taskmaster-Pro/) to view and use our site!
+Follow [this link](https://ashlynn4567.github.io/Taskmaster-Pro/) to view and use my site!
 
 ## Features
 
@@ -51,7 +51,9 @@ The tasks each user creates is saved in their local storage. This way, even if t
 
 - HTML
 - CSS
+- [Bootstrap](https://getbootstrap.com/)
 - JavaScript
+- [jQuery](https://jquery.com/)
 
 ## Future Development
 
@@ -60,7 +62,7 @@ In the future, I would like to add the following improvements:
 - I would like to add the option for users to select a time for which their tasks are due.
 - I would like the current date and time to display on the sidebar to show users how close their deadlines are approaching.
 
-I'm always interested in refactoring code to improve it's functionality. If you would like to suggest your own improvements, you can reach our development team at the links below.
+I'm always interested in refactoring code to improve it's functionality. If you would like to suggest your own improvements, you can reach me at the links below.
 
 - <a href="mailto:ashlynn4567@gmail.com">Email</a>
 - <a href="https://github.com/ashlynn4567">GitHub</a>
